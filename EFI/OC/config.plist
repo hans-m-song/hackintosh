@@ -154,7 +154,7 @@
 			<true/>
 			<key>ForceExitBootServices</key>
 			<false/>
-			<key>ProtectMemoryRegion</key>
+			<key>ProtectMemoryRegions</key>
 			<false/>
 			<key>ProtectSecureBoot</key>
 			<false/>
@@ -175,13 +175,7 @@
 	<key>DeviceProperties</key>
 	<dict>
 		<key>Add</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x8,0x1)/Pci(0x0,0x3)</key>
-			<dict>
-				<key>alc-layout-id</key>
-				<data>AQAAAA==</data>
-			</dict>
-		</dict>
+		<dict/>
 		<key>Block</key>
 		<dict/>
 	</dict>
@@ -249,9 +243,25 @@
 				<key>MinKernel</key>
 				<string></string>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/AppleALC</string>
+				<string>Contents/MacOS/MacProMemoryNotificationDisabler</string>
 				<key>BundlePath</key>
-				<string>AppleALC.kext</string>
+				<string>MacProMemoryNotificationDisabler.kext</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string></string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+				<key>Enabled</key>
+				<true/>
+				<key>MinKernel</key>
+				<string></string>
+				<key>ExecutablePath</key>
+				<string></string>
+				<key>BundlePath</key>
+				<string>RadeonBoost.kext</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -297,6 +307,22 @@
 				<key>MinKernel</key>
 				<string></string>
 				<key>ExecutablePath</key>
+				<string>Contents/MacOS/VoodooHDA</string>
+				<key>BundlePath</key>
+				<string>VoodooHDA.kext</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string></string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+				<key>Enabled</key>
+				<true/>
+				<key>MinKernel</key>
+				<string></string>
+				<key>ExecutablePath</key>
 				<string>Contents/MacOS/WhateverGreen</string>
 				<key>BundlePath</key>
 				<string>WhateverGreen.kext</string>
@@ -304,9 +330,9 @@
 		</array>
 		<key>Emulate</key>
 		<dict>
-			<key>CpuidMask</key>
+			<key>Cpuid1Data</key>
 			<data></data>
-			<key>CpuidData</key>
+			<key>Cpuid1Mask</key>
 			<data></data>
 		</dict>
 		<key>Block</key>
@@ -1292,16 +1318,18 @@
 		<dict>
 			<key>HibernateMode</key>
 			<string>None</string>
-			<key>PickerMode</key>
-			<string>Builtin</string>
 			<key>HideAuxiliary</key>
 			<false/>
 			<key>HideSelf</key>
 			<true/>
+			<key>ConsoleAttributes</key>
+			<integer>0</integer>
 			<key>PickerAttributes</key>
 			<integer>0</integer>
 			<key>PickerAudioAssist</key>
 			<false/>
+			<key>PickerMode</key>
+			<string>Builtin</string>
 			<key>PollAppleHotKeys</key>
 			<false/>
 			<key>ShowPicker</key>
@@ -1309,19 +1337,55 @@
 			<key>TakeoffDelay</key>
 			<integer>0</integer>
 			<key>Timeout</key>
-			<integer>5</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Debug</key>
 		<dict>
+			<key>AppleDebug</key>
+			<false/>
 			<key>DisableWatchDog</key>
 			<true/>
 			<key>DisplayDelay</key>
 			<integer>0</integer>
 			<key>DisplayLevel</key>
-			<integer>2147483714</integer>
+			<integer>2147483650</integer>
 			<key>Target</key>
 			<integer>67</integer>
 		</dict>
+		<key>Security</key>
+		<dict>
+			<key>AllowNvramReset</key>
+			<true/>
+			<key>AllowSetDefault</key>
+			<true/>
+			<key>AuthRestart</key>
+			<false/>
+			<key>Vault</key>
+			<string>Optional</string>
+			<key>ExposeSensitiveData</key>
+			<integer>8</integer>
+			<key>HaltLevel</key>
+			<integer>2147483648</integer>
+			<key>ScanPolicy</key>
+			<integer>0</integer>
+		</dict>
+		<key>Tools</key>
+		<array>
+			<dict>
+				<key>Comment</key>
+				<string>OpenShell.efi</string>
+				<key>Name</key>
+				<string>OpenShell.efi</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Arguments</key>
+				<string></string>
+				<key>Path</key>
+				<string>OpenShell.efi</string>
+				<key>Auxiliary</key>
+				<false/>
+			</dict>
+		</array>
 		<key>Entries</key>
 		<array>
 			<dict>
@@ -1339,26 +1403,6 @@
 				<string>PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x0)/NVMe(0x1,11-22-33-44-55-66-77-88)/HD(1,GPT,00000000-0000-0000-0000-000000000000,0x800,0x64000)/\EFI\BOOT\BOOTX64.EFI</string>
 			</dict>
 		</array>
-		<key>Security</key>
-		<dict>
-			<key>AllowNvramReset</key>
-			<true/>
-			<key>AllowSetDefault</key>
-			<true/>
-			<key>AuthRestart</key>
-			<false/>
-			<key>ExposeSensitiveData</key>
-			<data>CA==</data>
-			<key>HaltLevel</key>
-			<integer>2147483648</integer>
-			<key>Vault</key>
-			<string>Optional</string>
-			<key>ScanPolicy</key>
-			<integer>0</integer>
-		</dict>
-		<key>Tools</key>
-		<array>
-		</array>
 	</dict>
 	<key>NVRAM</key>
 	<dict>
@@ -1366,15 +1410,17 @@
 		<dict>
 			<key>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14</key>
 			<dict>
-				<key>UIScale</key>
-				<data>AQ==</data>
 				<key>DefaultBackgroundColor</key>
 				<data>AAAAAA==</data>
+				<key>UIScale</key>
+				<data>AQ==</data>
 			</dict>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
+				<key>SystemAudioVolume</key>
+				<data>Rg==</data>
 				<key>boot-args</key>
-				<string>-v keepsyms=1 npci=0x2000 debug=0x100 -raddvi</string>
+				<string>-v keepsyms=1 debug=0x100 npci=0x2000 agdpmod=pikera</string>
 				<key>csr-active-config</key>
 				<data>5wMAAA==</data>
 				<key>prev-lang:kbd</key>
@@ -1432,20 +1478,20 @@
 		<true/>
 		<key>Generic</key>
 		<dict>
-			<key>MLB</key>
-			<string>F5K930600CDFHDD1M</string>
-			<key>ROM</key>
-			<data>BNn1hfUZ</data>
 			<key>SpoofVendor</key>
 			<true/>
 			<key>AdviseWindows</key>
 			<false/>
+			<key>MLB</key>
+			<string>F5K045500QXK3F71F</string>
+			<key>ROM</key>
+			<data>BNn1hfUZ</data>
 			<key>SystemProductName</key>
-			<string>MacPro6,1</string>
+			<string>MacPro7,1</string>
 			<key>SystemSerialNumber</key>
-			<string>F5KSLPY0F9VM</string>
+			<string>F5KDNAYUP7QM</string>
 			<key>SystemUUID</key>
-			<string>F85FB6BA-53C8-45D3-9530-A9A72ADF241C</string>
+			<string>0E7ED680-91B5-4A13-A290-2C15F9602257</string>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>
@@ -1463,15 +1509,15 @@
 		<key>Drivers</key>
 		<array>
 			<string>ApfsDriverLoader.efi</string>
-			<string>FwRuntimeServices.efi</string>
-			<string>HFSPlus.efi</string>
+			<string>HfsPlus.efi</string>
+			<string>OpenRuntime.efi</string>
 		</array>
 		<key>Audio</key>
 		<dict>
 			<key>AudioSupport</key>
 			<false/>
 			<key>AudioDevice</key>
-			<string></string>
+			<string>PciRoot(0x0)/Pci(0x1b,0x0)</string>
 			<key>AudioCodec</key>
 			<integer>0</integer>
 			<key>AudioOut</key>
@@ -1496,11 +1542,11 @@
 			<key>KeySupportMode</key>
 			<string>Auto</string>
 			<key>KeySwap</key>
-			<false/>
+			<true/>
 			<key>PointerSupport</key>
 			<false/>
 			<key>PointerSupportMode</key>
-			<string>ASUS</string>
+			<string></string>
 			<key>TimerResolution</key>
 			<integer>50000</integer>
 		</dict>
@@ -1520,6 +1566,8 @@
 			<true/>
 			<key>DirectGopRendering</key>
 			<false/>
+			<key>DirectGopCacheMode</key>
+			<string></string>
 			<key>ReconnectOnResChange</key>
 			<false/>
 			<key>ReplaceTabWithSpace</key>
@@ -1532,6 +1580,8 @@
 			<key>AppleAudio</key>
 			<false/>
 			<key>AppleBootPolicy</key>
+			<false/>
+			<key>AppleDebugLog</key>
 			<false/>
 			<key>AppleEvent</key>
 			<false/>
